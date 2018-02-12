@@ -5,10 +5,18 @@ class FindChat extends Component {
 
   constructor(props) {
     super(props);
+    this.findChat = this.findChat.bind(this);
+  }
+
+  findChat() {
+    this.props.changePage('chat');
   }
 
   render() {
-    return <h1> Finding you a chat!</h1>;
+    return (<div>
+            <button onClick={this.findChat}> Find Chat </button>
+            </div>
+          );
   }
 
   async componentDidMount() {

@@ -9,15 +9,20 @@ class App extends Component {
       room: 0
     };
     this.updateRoom = this.updateRoom.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
 
   updateRoom(newRoom) {
     this.setState({room: newRoom});
   }
 
+  changePage(newPage) {
+    this.setState({page: newPage});
+  }
+
   render() {
     if (this.state.page === 'findChat') {
-      return (<div> <FindChat updateRoom={this.updateRoom}/> <h1> {this.state.room} </h1> </div>
+      return (<div> <FindChat updateRoom={this.updateRoom} changePage={this.changePage}/></div>
       );
     }else if (this.state.page === 'chat') {
       return (

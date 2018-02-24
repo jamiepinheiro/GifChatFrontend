@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FindChat from './FindChat';
+import Chat from './Chat';
 
 class App extends Component {
   constructor(props) {
@@ -26,9 +27,7 @@ class App extends Component {
       );
     }else if (this.state.page === 'chat') {
       return (
-        <div>
-          Chatting!
-        </div>
+        <Chat room={this.state.room}/>
       );
     }
 

@@ -21,7 +21,7 @@ class FindChat extends Component {
 
   async componentDidMount() {
     try{
-      var result = await axios.get('https://gifchat1.herokuapp.com/newRoom');
+      var result = await axios.get('http://192.168.2.24:3000/newRoom');
       this.props.updateRoom(result.data);
     }catch (e) {
       console.log(e);

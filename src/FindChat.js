@@ -11,29 +11,32 @@ class FindChat extends Component {
 
   nameChange(event) {
       var name = event.target.value;
-      if(name.length > 0) {
-          this.props.setName(name);
-      }
+      this.props.setName(name);
   }
 
   async findChat(e) {
-      e.preventDefault();
-      try{
-          var result = await axios.get('http://localhost:8000/newRoom');
-          this.props.updateRoom(result.data);
-      }catch (e) {
-          console.log(e);
-      }
-      if (this.props.page === 'findChat') {
-          this.props.changePage('chat');
-      }
+	  e.preventDefault();
+	  if(this.props.name.length > 0) {
+	      try{
+	          var result = await axios.get('http://localhost:8000/newRoom');
+	          this.props.updateRoom(result.data);
+	      }catch (e) {
+	          console.log(e);
+	      }
+	      if (this.props.page === 'findChat') {
+	          this.props.changePage('chat');
+	      }
+	  }
   }
 
   render() {
     return (
-        <form onSubmit={this.findChat}>
-            {this.props.page === 'findChat' && <input type="text" placeholder="what's your name?" onChange={this.nameChange} autoFocus/>}
-            <input type="submit" value="Find a Chat"/>
+        <form className="form-group mx-auto text-center" onSubmit={this.findChat}>
+            {this.props.page === 'findChat' &&
+				<div className="form-group">
+					<input className="form-control" type="message" placeholder="what's your name?" value={this.props.name} onChange={this.nameChange} autoFocus/>
+				</div>}
+            <button className={"btn btn-primary col-6 " + (this.props.name.length > 0 ? '' : 'disabled')} type="submit">Find a Chat</button>
         </form>
     );
   }

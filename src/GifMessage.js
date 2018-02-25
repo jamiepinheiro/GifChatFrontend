@@ -17,12 +17,13 @@ class GifMessage extends Component {
 
 	async getGif(e) {
 		e.preventDefault();
+		var name = this.state.message;
+		this.setState({message: ''});
 		try{
 			var result = await axios.get('http://localhost:8000/gifs?search=' + this.state.message);
 			var gifIndex = Math.round(Math.random() * (result.data.length - 1));
 			var url = result.data[gifIndex].url;
-			this.props.sendMessage(this.state.message, url);
-			this.setState({message: ''});
+			this.props.sendMessage(name, url);
 		}catch (e) {
 			console.log(e);
 		}
@@ -30,10 +31,13 @@ class GifMessage extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.getGif}>
-				<input type="text" placeholder="type a message" value={this.state.message} onChange={this.messageChange} autoFocus/>
-				<input type="submit" value="send"/>
-			</form>
+			<div className="fixed-bottom col-12 text-center mx-auto">
+				<hr classNsme="my-4"/>
+				<form className="form-inline" onSubmit={this.getGif}>
+					<input className="form-control col-10" type="text" placeholder="type a message" value={this.state.message} onChange={this.messageChange} autoFocus/>
+					<button className="input-group-btn btn btn-primary col-2" type="submit">Send</button>
+				</form>
+			</div>
 		);
 	}
 

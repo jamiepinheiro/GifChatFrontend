@@ -53,7 +53,7 @@ class Chat extends Component {
 
 		this.socket.on('gotMessage', (message) => {
 			var tempMessages = this.state.messages;
-			tempMessages.unshift(message);
+			tempMessages.push(message);
 			this.setState({messages: tempMessages});
 		});
 	}
@@ -83,13 +83,15 @@ class Chat extends Component {
 
 				{this.state.status === 'Chating' &&
 					<div>
-						<div className="row m-3">
-							<h4 className="col-9">You are now chating with <code>{this.state.partnerName}</code></h4>
-							<div className="col-3">
-								<button className="btn btn-danger float-right" onClick={this.endChat}>End Chat</button>
+						<div className="fixed-top bg-light">
+							<div className="row m-3">
+								<h4 className="col-9">You are now chating with <code>{this.state.partnerName}</code></h4>
+								<div className="col-3">
+									<button className="btn btn-danger float-right" onClick={this.endChat}>End Chat</button>
+								</div>
 							</div>
+							<hr/>
 						</div>
-						<hr/>
 						<Messages socketId={this.state.socketId} messages={this.state.messages}/>
 						<GifMessage sendMessage={this.sendMessage}/>
 					</div>}

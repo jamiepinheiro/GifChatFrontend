@@ -37,7 +37,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className={"row h-100 " + (this.state.center ? 'align-items-center bg' : '')}>
+			<div className={"row h-100 bg-light " + (this.state.center ? 'align-items-center bg' : '')}>
 				<div className={"container "+ (this.state.center ? 'col-xl-4 col-lg-6 col-md-8 col-sm-12 text-center' : 'col-12')}>
 					{this.state.page === 'findChat' &&
 						<div>

@@ -22,6 +22,7 @@ class GifMessage extends Component {
 			var gifIndex = Math.round(Math.random() * (result.data.length - 1));
 			var url = result.data[gifIndex].url;
 			this.props.sendMessage(this.state.message, url);
+			this.setState({message: ''});
 		}catch (e) {
 			console.log(e);
 		}

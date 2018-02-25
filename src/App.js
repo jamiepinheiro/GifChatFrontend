@@ -29,11 +29,11 @@ class App extends Component {
 
   render() {
     if (this.state.page === 'findChat') {
-      return (<div> <FindChat setName={this.setName} updateRoom={this.updateRoom} changePage={this.changePage}/></div>
+      return (<div> <FindChat page="findChat" name={this.state.name} setName={this.setName} updateRoom={this.updateRoom} changePage={this.changePage}/></div>
       );
     }else if (this.state.page === 'chat') {
       return (
-        <Chat name={this.state.name} room={this.state.room}/>
+        <Chat name={this.state.name} room={this.state.room} updateRoom={this.updateRoom}/>
       );
     }
 

@@ -16,28 +16,28 @@ class FindChat extends Component {
       }
   }
 
-  findChat(e) {
+  async findChat(e) {
       e.preventDefault();
-      this.props.changePage('chat');
+      try{
+          var result = await axios.get('http://localhost:8000/newRoom');
+          this.props.updateRoom(result.data);
+      }catch (e) {
+          console.log(e);
+      }
+      if (this.props.page === 'findChat') {
+          this.props.changePage('chat');
+      }
   }
 
   render() {
     return (
         <form onSubmit={this.findChat}>
-            <input type="text" placeholder="what's your name?" onChange={this.nameChange} autoFocus/>
+            {this.props.page === 'findChat' && <input type="text" placeholder="what's your name?" onChange={this.nameChange} autoFocus/>}
             <input type="submit" value="Find a Chat"/>
         </form>
     );
   }
 
-  async componentDidMount() {
-    try{
-        var result = await axios.get('http://localhost:8000/newRoom');
-        this.props.updateRoom(result.data);
-    }catch (e) {
-        console.log(e);
-    }
-  }
 }
 
 export default FindChat;

@@ -7,10 +7,16 @@ class App extends Component {
     super(props);
     this.state = {
       page: 'findChat',
-      room: 0
+      room: 0,
+      name: ''
     };
     this.updateRoom = this.updateRoom.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.setName = this.setName.bind(this);
+  }
+
+  setName(name) {
+      this.setState({name});
   }
 
   updateRoom(newRoom) {
@@ -23,11 +29,11 @@ class App extends Component {
 
   render() {
     if (this.state.page === 'findChat') {
-      return (<div> <FindChat updateRoom={this.updateRoom} changePage={this.changePage}/></div>
+      return (<div> <FindChat setName={this.setName} updateRoom={this.updateRoom} changePage={this.changePage}/></div>
       );
     }else if (this.state.page === 'chat') {
       return (
-        <Chat room={this.state.room}/>
+        <Chat name={this.state.name} room={this.state.room}/>
       );
     }
 

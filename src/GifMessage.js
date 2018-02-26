@@ -20,7 +20,7 @@ class GifMessage extends Component {
 		var name = this.state.message;
 		this.setState({message: ''});
 		try{
-			var result = await axios.get('http://localhost:8000/gifs?search=' + this.state.message);
+			var result = await axios.get('https://gifchat1server.herokuapp.com/gifs?search=' + this.state.message);
 			var gifIndex = Math.round(Math.random() * (result.data.length - 1));
 			var url = result.data[gifIndex].url;
 			this.props.sendMessage(name, url);

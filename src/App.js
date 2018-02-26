@@ -37,7 +37,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className={"row h-100 bg-light " + (this.state.center ? 'align-items-center bg' : '')}>
+			<div className={"row h-100 " + (this.state.center ? 'align-items-center bg' : '')}>
 				<div className={"container "+ (this.state.center ? 'col-xl-4 col-lg-6 col-md-8 col-sm-12 text-center' : 'col-12')}>
 					{this.state.page === 'findChat' &&
 						<div>
@@ -45,7 +45,7 @@ class App extends Component {
 							<p className="lead text-white">Chat with strangers online using the language of gifs!</p>
 							<FindChat page="findChat" name={this.state.name} setName={this.setName} updateRoom={this.updateRoom} changePage={this.changePage}/>
 						</div>}
-					{this.state.page === 'chat' && <Chat name={this.state.name} room={this.state.room} updateRoom={this.updateRoom} changeCenter={this.changeCenter}/>}s
+					{this.state.page === 'chat' && <Chat name={this.state.name} room={this.state.room} updateRoom={this.updateRoom} changeCenter={this.changeCenter}/>}
 				</div>
 			</div>
 		);

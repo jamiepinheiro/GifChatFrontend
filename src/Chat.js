@@ -27,7 +27,7 @@ class Chat extends Component {
 	}
 
 	socketSetup() {
-		this.socket = io('http://localhost:8000/');
+		this.socket = io('https://gifchat1server.herokuapp.com/');
 		this.socket.on('connect', () => {
 			this.socket.emit('join', {room: this.props.room});
 			this.setState({socketId: this.socket.id});

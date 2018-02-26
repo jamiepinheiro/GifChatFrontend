@@ -28,9 +28,9 @@ class Chat extends Component {
 
 	socketSetup() {
 		this.socket = io('http://localhost:8000/');
-		this.setState({socketId: this.socket.id});
 		this.socket.on('connect', () => {
 			this.socket.emit('join', {room: this.props.room});
+			this.setState({socketId: this.socket.id});
 		});
 
 		this.socket.on('status', (status) => {
@@ -92,7 +92,7 @@ class Chat extends Component {
 							</div>
 							<hr/>
 						</div>
-						<Messages socketId={this.state.socketId} messages={this.state.messages}/>
+						<Messages socketId={this.state.socketId} messages={this.state.messages} partnerName={this.state.partnerName}/>
 						<GifMessage sendMessage={this.sendMessage}/>
 					</div>}
 

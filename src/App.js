@@ -45,8 +45,7 @@ class App extends Component {
 							<p className="lead text-white">Chat with strangers online using the language of gifs!</p>
 							<FindChat page="findChat" name={this.state.name} setName={this.setName} updateRoom={this.updateRoom} changePage={this.changePage}/>
 						</div>}
-					{this.state.page === 'chat' && <Chat name={this.state.name} room={this.state.room} updateRoom={this.updateRoom} changeCenter={this.changeCenter}/>}
-
+					{this.state.page === 'chat' && <Chat name={this.state.name} room={this.state.room} updateRoom={this.updateRoom} changeCenter={this.changeCenter}/>}s
 				</div>
 			</div>
 		);

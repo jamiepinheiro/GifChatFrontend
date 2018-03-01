@@ -31,7 +31,7 @@ class GifMessage extends Component {
 
 	render() {
 		return (
-			<div className="fixed-bottom bg-light col-12 text-center mx-auto">
+			<div className="fixed-bottom bg-light col-12 text-center mx-auto p-3">
 				<hr className="my-4"/>
 				<form className="form-inline" onSubmit={this.getGif}>
 					<input className="form-control col-10" type="text" placeholder="type a message" value={this.state.message} onChange={this.messageChange} autoFocus/>

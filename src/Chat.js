@@ -99,7 +99,7 @@ class Chat extends Component {
 				{this.state.status === "Ended" &&
 					<div>
 						<div className="row justify-content-center m-1">
-							<h3 className="text-white">You chat has ended!</h3>
+							<h3 className="text-white">Your chat has ended!</h3>
 						</div>
 						<FindChat name={this.props.name} updateRoom={this.props.updateRoom}/>
 					</div>}

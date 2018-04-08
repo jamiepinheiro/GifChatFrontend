@@ -7,6 +7,13 @@ class FindChat extends Component {
     super(props);
     this.nameChange = this.nameChange.bind(this);
     this.findChat = this.findChat.bind(this);
+    pingServer();
+  }
+
+  async pingServer() {
+      try{
+         await axios.get("https://gifchat1server.herokuapp.com/"); 
+      }
   }
 
   nameChange(event) {
@@ -16,7 +23,7 @@ class FindChat extends Component {
 
   async findChat(e) {
 	  e.preventDefault();
-	  if(this.props.name.length > 0) {
+	  if(this.props.name.length > 0){
 	      try{
 	          var result = await axios.get('https://gifchat1server.herokuapp.com/newRoom');
 	          this.props.updateRoom(result.data);
